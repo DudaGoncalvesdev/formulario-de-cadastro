@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #F0F8FF;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #1f1f1f;
+    margin-top: 2%;
+}
+
+#content {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.disponivel {
+    color: rgb(0, 100, 0);
+}
+
+.esgotado {
+    color: red;
+}
+
+h1, h2{
+    margin: 0 0 0.5em 0;
+}
+
+hr {
+    margin: 2em 0 1.5em 0; 
+    padding: 0;
+}
+
+input,select,textarea,button,table{
+    border-radius: 3px;
+}
+
+input[type='text'], input[type='number'], textarea {
+    width: 97% !important;
+}
+
+input[type='text'], input[type='number'], select, textarea {
+    padding: 0.5em;
+    width: 100%;
+    border: 1px solid #aaa;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+.btn-enviar, .btn-enviar:visited {
+    border: 1px solid #380B61;
+    background-color: #380B61;
+    color: #fff;
+    padding: 0.75em;
+    font-size: 1em;
+}
+
+.btn-enviar:is(:hover, :focus, :active) {
+    border: 1px solid #380B61;
+    background-color: #59429d;
+    color: #380B61;
+    padding: 0.75em;
+}
+
+.campo{
+    margin-bottom: 1em;
+}
+
+.campo label{
+    margin-bottom: 0.3em;
+}
+
+table{
+    border: 1px solid #aaa;
+    width: 100%;
+    text-align: center;
+}
+
+tbody{
+    border: 1px solid #aaa;
+}
+
+th, td{
+    border: 1px solid #aaa;
+}
+

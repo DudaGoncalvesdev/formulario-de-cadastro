@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content"><h1>Cadastro de Produtos</h1>
+        <form id="produtoForm">
+            <div class="campo">
+                <label>Nome do Produto:</label>
+                <input type="text" name="nome-prod" id="nome-prod" placeholder="Digite o nome do produto" required>
+            </div>
+    
+            <div class="campo">
+                <label for="qtd">Quantidade:</label>
+                <input type="number" name="qtd" id="qtd" placeholder="Digite a quantidade" required>
+            </div>
+            
+            <div class="campo">
+                <label>Categoria:</label>
+                <select name="categorias" id="categorias" required>
+                    <option value="" disabled selected>-- Selecione --</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Roupas">Roupas</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+    
+            <div class="campo">
+                <label>Disponibilidade:</label>
+                <label for="estoque">
+                    <input type="radio" name="disponibilidade" id="estoque" value="Em Estoque" required> Em Estoque
+                </label>
+                <label for="esgotado">
+                    <input type="radio" name="disponibilidade" id="esgotado" value="Esgotado"> Esgotado
+                </label>
+            </div>
+    
+            <div class="campo">
+                <label>Descrição:</label>
+                <textarea name="descricao" id="descricao" placeholder="Digite a descrição do produto" rows="5" required></textarea>
+            </div>
+    
+            <button type="submit" class="btn-enviar">Cadastrar Produto</button>
+        </form>
+    
+        <hr>
+
+        <h2>Produtos Cadastrados</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome do Produto</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+                <th>Disponibilidade</th>
+                <th>Descrição</th>
+            </tr> 
+            </thead>
+    
+            <tbody id="produtoTable">
+    
+            </tbody>
+    
+            <tfoot>
+                <tr>
+                    <td colspan="5">Total de Produtos Cadastrados:<span id="totalProdutos">  0</span></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("produtoForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const nomeProd = document.getElementById("nome-prod").value;
+            const qtd = document.getElementById("qtd").value;
+            const categoria = document.getElementById("categorias").value;
+            const disponibilidade = document.querySelector('input[name="disponibilidade"]:checked').value;
+            const descricao = document.getElementById("descricao").value;
+
+            
+            const table = document.getElementById("produtoTable");
+            const newline = table.insertRow();
+            
+
+            newline.insertCell(0).textContent = nomeProd;
+            newline.insertCell(1).textContent = qtd;
+            newline.insertCell(2).textContent = categoria;
+            const celulaDisponibilidade = newline.insertCell(3);
+            celulaDisponibilidade.textContent = disponibilidade;
+            if (disponibilidade === "Em Estoque") { 
+                celulaDisponibilidade.classList.add("disponivel");
+            } else {
+                celulaDisponibilidade.classList.add("esgotado");
+            }
+            newline.insertCell(4).textContent = descricao;
+    
+            
+            const totalProdutos = document.getElementById("totalProdutos");
+            totalProdutos.textContent = table.rows.length;
+
+            document.getElementById("produtoForm").reset();
+        });
+    </script>
+</body>
+</html>
